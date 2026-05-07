@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: rfid-reader-backend
+
+server:
+  address: 0.0.0.0
+  port: 8080
+
+logging:
+  level:
+    com.muc.rfid: DEBUG
