@@ -25,12 +25,12 @@ public class TagServiceImpl implements TagService {
     @Override
     @Transactional
     public TagResponse uploadTag(TagUploadRequest request, String rawJson) {
-        LocalDateTime threeSecondsAgo = LocalDateTime.now().minusSeconds(3);
+        LocalDateTime fiveMinutesAgo = LocalDateTime.now().minusMinutes(5);
 
         boolean exists = tagReadRepository.existsByEpcAndReaderIdAndCreatedAtAfter(
                 request.getEpc(),
                 request.getReaderId(),
-                threeSecondsAgo
+                fiveMinutesAgo
         );
 
         if (exists) {

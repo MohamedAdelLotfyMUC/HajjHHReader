@@ -30,15 +30,13 @@ public interface TagReadRepository extends JpaRepository<TagRead, Long> {
     @Modifying
     @Transactional
     @Query(value = """
-        DELETE FROM tag_reads t
-        WHERE t.id NOT IN (
-            SELECT MAX(t2.id)
-            FROM tag_reads t2
-            WHERE t2.epc IS NOT NULL
-              AND t2.reader_id IS NOT NULL
-            GROUP BY t2.epc, t2.reader_id
-        )
-        AND t.created_at < NOW() - INTERVAL '5 minutes'
-        """, nativeQuery = true)
-    int deleteDuplicateTagsKeepLatest();
+    DELETE FROM tag_reads t
+    USING tag_reads latest
+    WHERE t.epc = latest.epc
+      AND t.reader_id = latest.reader_id
+      AND t.id < latest.id
+      AND t.created_at >= NOW() - INTERVAL '5 minutes'
+      AND latest.created_at >= NOW() - INTERVAL '5 minutes'
+    """, nativeQuery = true)
+    int deleteDuplicatesOnlyWithinLastFiveMinutes();
 }

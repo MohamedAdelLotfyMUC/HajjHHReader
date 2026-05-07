@@ -13,12 +13,12 @@ public class TagCleanupScheduler {
 
     private final TagReadRepository tagReadRepository;
 
-    @Scheduled(fixedRate = 300000) // every 5 minutes
+    @Scheduled(fixedRate = 300000)
     public void cleanupDuplicateTags() {
-        int deletedRows = tagReadRepository.deleteDuplicateTagsKeepLatest();
+        int deletedRows = tagReadRepository.deleteDuplicatesOnlyWithinLastFiveMinutes();
 
         if (deletedRows > 0) {
-            log.info("RFID duplicate cleanup completed. Deleted {} duplicate records.", deletedRows);
+            log.info("RFID duplicate cleanup deleted {} duplicate records within last 5 minutes.", deletedRows);
         }
     }
 }
