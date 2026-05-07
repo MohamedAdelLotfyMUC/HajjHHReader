@@ -1,12 +1,12 @@
 spring:
   profiles:
-    active: dev
+    active: prod
   application:
     name: rfid-reader-backend
 
 server:
   address: 0.0.0.0
-  port: 8080
+  port: ${PORT:8080}
 
 logging:
   level:
