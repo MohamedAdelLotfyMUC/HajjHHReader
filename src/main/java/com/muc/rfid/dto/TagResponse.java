@@ -22,6 +22,7 @@ public class TagResponse {
     private Double frequencyPoint;
     private Double phase;
     private String readerId;
+    private String companyName;
     private String userData;
     private String reserved;
     private LocalDateTime createdAt;

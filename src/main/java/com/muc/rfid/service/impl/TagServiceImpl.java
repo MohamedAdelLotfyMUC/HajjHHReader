@@ -42,6 +42,7 @@ public class TagServiceImpl implements TagService {
                     .orElse(TagRead.builder()
                             .epc(request.getEpc())
                             .readerId(request.getReaderId())
+                            .companyName(request.getCompanyName())
                             .timestamp(request.getTimestamp())
                             .build());
 
@@ -58,6 +59,7 @@ public class TagServiceImpl implements TagService {
                 .frequencyPoint(request.getFrequencyPoint())
                 .phase(request.getPhase())
                 .readerId(request.getReaderId())
+                .companyName(request.getCompanyName())
                 .userData(request.getUserData())
                 .reserved(request.getReserved())
                 .rawPayload(rawJson)
@@ -104,6 +106,7 @@ public class TagServiceImpl implements TagService {
                 .frequencyPoint(entity.getFrequencyPoint())
                 .phase(entity.getPhase())
                 .readerId(entity.getReaderId())
+                .companyName(entity.getCompanyName())
                 .userData(entity.getUserData())
                 .reserved(entity.getReserved())
                 .createdAt(entity.getCreatedAt())

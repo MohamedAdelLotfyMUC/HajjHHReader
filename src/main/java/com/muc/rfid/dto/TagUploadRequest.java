@@ -32,6 +32,9 @@ public class TagUploadRequest {
     
     @NotBlank(message = "Reader ID is required")
     private String readerId;
+
+    @NotBlank(message = "Company Name is required")
+    private String companyName;
     
     private String userData;
     

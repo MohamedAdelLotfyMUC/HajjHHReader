@@ -39,6 +39,9 @@ public class TagRead {
     @Column(nullable = false)
     private String readerId;
 
+    @Column(nullable = false)
+    private String companyName;
+
     private String userData;
 
     private String reserved;

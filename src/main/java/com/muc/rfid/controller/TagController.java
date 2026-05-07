@@ -81,6 +81,7 @@ public class TagController {
                 .frequencyPoint(asDouble(tag.get("freq")))
                 .phase(asDouble(tag.get("phase")))
                 .readerId(asString(tag.get("serialno")))
+                .companyName(asString(tag.get("customcode")))
                 .userData(asString(tag.get("userdata")))
                 .reserved(asString(tag.get("reserved")))
                 .build();
